@@ -1,2 +1,4 @@
 freeglut.dll
 *.exe
+
+.vscode
