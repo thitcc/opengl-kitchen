@@ -5,6 +5,7 @@
 #include "libs/colors.h"
 #include "libs/vectors.h"
 #include "libs/build.h"
+#include "libs/animation.h"
 
 // Points of Interest
 #define ORIGIN 0.0f, 0.0f, 0.0f
@@ -23,8 +24,8 @@ typedef struct Transform {
 const float DEG2RAD = M_PI / 180.0f;
 const float RAD2DEG = 180.0f / M_PI;
 
-Vec2D WINDOW_SIZE = {1280, 720};
-Vec2D WINDOW_CENTER = {640, 360};
+Vec2D WINDOW_SIZE = {1920, 1080};
+Vec2D WINDOW_CENTER = {960, 540};
 
 float FOVY = 75.0f;
 float ZNEAR = 10e-3;
@@ -120,6 +121,9 @@ void display() {
 	buildBackWall();
 	buildLeftWall();
 	buildRightWall();
+	buildDoor(doorAngle);
+	buildFloor();
+	buildCeiling();
 	
 	glutSwapBuffers();
 }
@@ -167,9 +171,12 @@ void motion(int x, int y) {
 // Keyboard movement
 
 void keyboard(unsigned char key, int x, int y){
-	if(key == 27)
+	if(key == 27) { // ESC
 		glutLeaveMainLoop();
-
+	} else if(key == 112) { // p
+		doorAngle == 0.0f ? doorAnimation(1) : doorAnimation(-1);
+	}
+		
 	KEYBOARD[tolower(key)] = 1;
 }
 
