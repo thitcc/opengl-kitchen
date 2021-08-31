@@ -9,5 +9,6 @@
 #define YELLOW 1.0f, 1.0f, 0.0f
 #define PURPLE 1.0f, 0.0f, 1.0f
 #define CYAN 0.0f, 1.0f, 1.0f
+#define BROWN 0.6f, 0.3f, 0.1f
 
 #endif
