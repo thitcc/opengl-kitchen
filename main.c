@@ -12,6 +12,7 @@
 #define RIGHT 1.0f, 0.0f, 0.0f
 #define UP 0.0f, 1.0f, 0.0f
 #define FORWARD 0.0f, 0.0f, -1.0f
+#define FPS 120
 
 typedef struct Transform {
 	Vec3D position;
@@ -33,9 +34,6 @@ float ZFAR = 10e3;
 
 Transform CAM;
 Vec2D MOTION;
-
-Vec3D door;
-Vec3D window;
 
 int KEYBOARD[128] = {0};
 
@@ -77,11 +75,11 @@ int main(int argc, char** argv) {
 	glutWarpPointer(WINDOW_CENTER.x, WINDOW_CENTER.y);	
 
 	glutDisplayFunc(display);
-	glutIdleFunc(idle);
 	glutPassiveMotionFunc(motion);
 	glutKeyboardFunc(keyboard);
 	glutKeyboardUpFunc(keyboard_up);
 	glutReshapeFunc(reshape);
+	glutTimerFunc(1000 / FPS, idle, 0);
 
 	init_gl();
 
@@ -128,7 +126,7 @@ void display() {
 	glutSwapBuffers();
 }
 
-void idle() {
+void idle(int value) {
 	// Forward movement
 	int move_forward = KEYBOARD['w'] - KEYBOARD['s'];
 	Vec3D fwd = forward(&CAM);
@@ -148,6 +146,7 @@ void idle() {
 	CAM.position.z += 0.1f * (fwd.z + rgt.z);
 
 	glutPostRedisplay();
+	glutTimerFunc(1000 / FPS, idle, 0);
 }
 
 void motion(int x, int y) { 
