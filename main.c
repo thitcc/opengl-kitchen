@@ -171,8 +171,6 @@ void motion(int x, int y) {
 	}
 }
 
-// Keyboard movement
-
 void keyboard(unsigned char key, int x, int y){
 	if (key == 27) { // ESC
 		glutLeaveMainLoop();
@@ -189,8 +187,6 @@ void keyboard_up(unsigned char key, int x, int y){
 	KEYBOARD[tolower(key)] = 0;
 }
 
-// Window Reshape
-
 void reshape(int width, int height) {
 	float aspect = (float) width / (float) height;
 	WINDOW_SIZE.x = width;
@@ -203,8 +199,6 @@ void reshape(int width, int height) {
 	glLoadIdentity();
 	gluPerspective(FOVY, aspect, ZNEAR, ZFAR);
 }
-
-// Camera movement
 
 Vec3D forward(Transform* t) {
 	Vec3D v;

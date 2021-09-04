@@ -39,10 +39,10 @@ void buildWall(float width, float height, float depth) {
   glVertex3f(width, 0.0f, depth);
 
   // Top
-  glVertex3f(0.0f, height, depth);
   glVertex3f(0.0f, height, 0.0f);
-  glVertex3f(width, height, 0.0f);
+  glVertex3f(0.0f, height, depth);
   glVertex3f(width, height, depth);
+  glVertex3f(width, height, 0.0f);
 
   // Bottom
   glVertex3f(0.0f, 0.0f, 0.0f);
