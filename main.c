@@ -146,7 +146,13 @@ void idle(int value) {
 	rgt.x *= move_right;
 	rgt.z *= move_right;
 	
+	int move_up = KEYBOARD[' '] - KEYBOARD['c'];
+	Vec3D upw = up(&CAM);
+
+	upw.y *= move_up;
+	
 	CAM.position.x += 0.1f * (fwd.x + rgt.x);
+	CAM.position.y += 0.1f * upw.y;
 	CAM.position.z += 0.1f * (fwd.z + rgt.z);
 
 	glutPostRedisplay();
