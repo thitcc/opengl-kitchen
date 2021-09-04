@@ -119,9 +119,11 @@ void display() {
 	buildBackWall();
 	buildLeftWall();
 	buildRightWall();
-	buildDoor(doorAngle);
+	buildDoor(door.angle);
 	buildFloor();
 	buildCeiling();
+
+	doorAnimation();
 	
 	glutSwapBuffers();
 }
@@ -170,10 +172,10 @@ void motion(int x, int y) {
 // Keyboard movement
 
 void keyboard(unsigned char key, int x, int y){
-	if(key == 27) { // ESC
+	if (key == 27) { // ESC
 		glutLeaveMainLoop();
-	} else if(key == 112) { // p
-		doorAngle == 0.0f ? doorAnimation(1) : doorAnimation(-1);
+	} else if (key == 112) { // p
+		changeDoorState();
 	}
 		
 	KEYBOARD[tolower(key)] = 1;
