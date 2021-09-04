@@ -5,9 +5,9 @@ const float KITCHEN_WIDTH = 20;
 const float KITCHEN_HEIGHT = 10;
 const float KITCHEN_DEPTH = 1;
 
-const float DOOR_WIDTH = 2.8f;
+const float DOOR_WIDTH = 2.8;
 const float DOOR_HEIGHT = 6;
-const float DOOR_DEPTH = 1;
+const float DOOR_DEPTH = 0.2;
 
 const float WINDOW_WIDTH = 4;
 const float WINDOW_HEIGHT = 3;
@@ -127,13 +127,13 @@ void buildDoor(float curvature_angle) {
     glRotatef(270.0f - curvature_angle, 0.0f, 1.0f, 0.0f);
 
     glBegin(GL_QUADS);
-      buildWall(DOOR_WIDTH, DOOR_HEIGHT, 0.2f);
+      buildWall(DOOR_WIDTH, DOOR_HEIGHT, DOOR_DEPTH);
     glEnd();
 
     glPushMatrix();
       glRotatef(270.0f, 0.0f, 1.0f, 0.0f);
       glBegin(GL_QUADS);
-        buildWall(0.2f, DOOR_HEIGHT, 0.2);
+        buildWall(0.2f, DOOR_HEIGHT, DOOR_DEPTH);
       glEnd();
     glPopMatrix();
 
