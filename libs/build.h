@@ -52,7 +52,7 @@ void buildWall(float width, float height, float depth) {
 }
 
 void buildFrontWall() {
-  glColor3f(RED);
+  glColor3f(FRONTWALL);
 
   glBegin(GL_QUADS);
     buildWall(KITCHEN_WIDTH, KITCHEN_HEIGHT, KITCHEN_DEPTH);
@@ -60,33 +60,34 @@ void buildFrontWall() {
 }
 
 void buildBackWall() {
-  glColor3f(GREEN);
+  glColor3f(BACKWALL);
 
   glPushMatrix();
     glTranslatef(0.0f, 0.0f, KITCHEN_WIDTH);
 
+    // Left
     glBegin(GL_QUADS);
       buildWall(KITCHEN_WIDTH - 5, KITCHEN_HEIGHT, KITCHEN_DEPTH);
     glEnd();
 
+    // Right
     glPushMatrix();
-      glColor3f(PURPLE);
       glTranslatef(15.0f, 0.0f, 0.0f);
       glBegin(GL_QUADS);
         buildWall(5.0f, 6.0f, KITCHEN_DEPTH);
       glEnd();
     glPopMatrix();
 
+    // Right-Top
     glPushMatrix();
-      glColor3f(YELLOW);
       glTranslatef(18.0f, 6.0f, 0.0f);
       glBegin(GL_QUADS);
         buildWall(2.0f, WINDOW_HEIGHT + 2, KITCHEN_DEPTH);
       glEnd();
     glPopMatrix();
 
+    //Left-Top
     glPushMatrix();
-      glColor3f(RED);
       glTranslatef(15.0f, 8.0f, 0.0f);
       glBegin(GL_QUADS);
         buildWall(3.0f, 2.0f, KITCHEN_DEPTH);
@@ -109,7 +110,7 @@ void buildWindow(float curvature_angle) {
 }
 
 void buildLeftWall() {
-  glColor3f(BLUE);
+  glColor3f(LEFTWALL);
 
   glPushMatrix();
     glRotatef(270.0f, 0.0f, 1.0f, 0.0f);
@@ -123,7 +124,7 @@ void buildLeftWall() {
 }
 
 void buildRightWall() {
-  glColor3f(RED);
+  glColor3f(RIGHTWALL);
 
   glPushMatrix();
     glTranslatef(KITCHEN_WIDTH, 0.0f, KITCHEN_DEPTH);
@@ -178,7 +179,7 @@ void buildDoor(float curvature_angle) {
 }
 
 void buildFloor() {
-  glColor3f(PURPLE);
+  glColor3f(GREY);
 
   glPushMatrix();
     glTranslatef(0.0f, 0.0f, 1.0f);
@@ -193,7 +194,7 @@ void buildFloor() {
 }
 
 void buildCeiling() {
-  glColor3f(CYAN);
+  glColor3f(GREY);
 
   glPushMatrix();
     glTranslatef(0.0f, KITCHEN_HEIGHT, 1.0f);
