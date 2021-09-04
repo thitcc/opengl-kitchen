@@ -117,6 +117,7 @@ void display() {
 
 	buildFrontWall();
 	buildBackWall();
+	buildWindow(window.angle);
 	buildLeftWall();
 	buildRightWall();
 	buildDoor(door.angle);
@@ -124,6 +125,7 @@ void display() {
 	buildCeiling();
 
 	doorAnimation();
+	windowAnimation();
 	
 	glutSwapBuffers();
 }
@@ -176,6 +178,8 @@ void keyboard(unsigned char key, int x, int y){
 		glutLeaveMainLoop();
 	} else if (key == 112) { // p
 		changeDoorState();
+	} else if (key == 106) { // j
+		changeWindowState();
 	}
 		
 	KEYBOARD[tolower(key)] = 1;

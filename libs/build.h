@@ -9,9 +9,9 @@ const float DOOR_WIDTH = 2.8;
 const float DOOR_HEIGHT = 6;
 const float DOOR_DEPTH = 0.2;
 
-const float WINDOW_WIDTH = 4;
-const float WINDOW_HEIGHT = 3;
-const float WINDOW_DEPTH = 1;
+const float WINDOW_WIDTH = 3;
+const float WINDOW_HEIGHT = 2;
+const float WINDOW_DEPTH = 0.2;
 
 void buildWall(float width, float height, float depth) {
   // Front
@@ -66,11 +66,46 @@ void buildBackWall() {
     glTranslatef(0.0f, 0.0f, KITCHEN_WIDTH);
 
     glBegin(GL_QUADS);
-      buildWall(KITCHEN_WIDTH, KITCHEN_HEIGHT, KITCHEN_DEPTH);
+      buildWall(KITCHEN_WIDTH - 5, KITCHEN_HEIGHT, KITCHEN_DEPTH);
     glEnd();
+
+    glPushMatrix();
+      glColor3f(PURPLE);
+      glTranslatef(15.0f, 0.0f, 0.0f);
+      glBegin(GL_QUADS);
+        buildWall(5.0f, 6.0f, KITCHEN_DEPTH);
+      glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+      glColor3f(YELLOW);
+      glTranslatef(18.0f, 6.0f, 0.0f);
+      glBegin(GL_QUADS);
+        buildWall(2.0f, WINDOW_HEIGHT + 2, KITCHEN_DEPTH);
+      glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+      glColor3f(RED);
+      glTranslatef(15.0f, 8.0f, 0.0f);
+      glBegin(GL_QUADS);
+        buildWall(3.0f, 2.0f, KITCHEN_DEPTH);
+      glEnd();
+    glPopMatrix();
   glPopMatrix();
 
   glFlush();
+}
+
+void buildWindow(float curvature_angle) {
+  glColor3f(WHITE);
+  glPushMatrix();
+    glTranslatef(15.0f, 6.0f, KITCHEN_WIDTH);
+    glRotatef(0.0f + curvature_angle, 1.0f, 0.0f, 0.0f);
+    glBegin(GL_QUADS);
+      buildWall(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_DEPTH);
+    glEnd();
+  glPopMatrix();
 }
 
 void buildLeftWall() {
