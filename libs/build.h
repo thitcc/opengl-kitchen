@@ -11,7 +11,7 @@ const float DOOR_DEPTH = 0.2;
 
 const float WINDOW_WIDTH = 3;
 const float WINDOW_HEIGHT = 2;
-const float WINDOW_DEPTH = 0;
+const float WINDOW_DEPTH = 0.2;
 
 void buildWall(float width, float height, float depth) {
   // Front
@@ -101,7 +101,7 @@ void buildBackWall() {
 void buildWindow(float curvature_angle) {
   glColor3f(SOFTBLUE);
   glPushMatrix();
-    glTranslatef(15.0f, 8.0f, KITCHEN_WIDTH);
+    glTranslatef(15.0f, 8.0f, KITCHEN_WIDTH + WINDOW_DEPTH);
     glRotatef(180.0f, 1.0f, 0.0f, 0.0f);
     glRotatef(0.0f + curvature_angle, 1.0f, 0.0f, 0.0f);
     glBegin(GL_QUADS);
