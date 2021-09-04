@@ -21,4 +21,7 @@
 #define LEFTWALL 0.93f, 0.93f, 0.93f
 #define RIGHTWALL 0.92f, 0.92f, 0.92f
 
+#define DARKGREY 0.5f, 0.5f, 0.5f
+#define SOFTGREY 0.8f, 0.8f, 0.8f
+
 #endif

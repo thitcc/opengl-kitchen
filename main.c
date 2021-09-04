@@ -123,6 +123,11 @@ void display() {
 	buildDoor(door.angle);
 	buildFloor();
 	buildCeiling();
+	buildSink();
+	buildSinkUpperCabinet();
+	buildFridge();
+	buildStove();
+	buildCabinet();
 
 	doorAnimation();
 	windowAnimation();
@@ -145,7 +150,7 @@ void idle(int value) {
 
 	rgt.x *= move_right;
 	rgt.z *= move_right;
-	
+
 	int move_up = KEYBOARD[' '] - KEYBOARD['c'];
 	Vec3D upw = up(&CAM);
 

@@ -208,4 +208,106 @@ void buildCeiling() {
 
   glFlush();
 }
+
+void buildSink() {
+  glColor3f(DARKGREY);
+
+  glPushMatrix();
+    glTranslatef(8.0f, 3.5f, 1.0f);
+    glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+
+    // Top
+    glBegin(GL_QUADS);
+      buildWall(5.0f, 3.0f, 0.5f);
+    glEnd();
+
+    // Bottom
+    glPushMatrix();
+      glTranslatef(0.5f, 0.0f, 0.5f);
+      glColor3f(BROWN);
+      glBegin(GL_QUADS);
+        buildWall(4.0f, 3.0f, 3.0f);
+      glEnd();
+    glPopMatrix();
+
+    // Water Tap
+    glPushMatrix();
+      glTranslatef(2.0f, 0.0f, -1.8f);
+      glColor3f(GREY);
+      glBegin(GL_QUADS);
+        buildWall(0.5f, 1.0f, 0.2f);
+      glEnd();
+
+      glTranslatef(0.0f, 1.0f, 0.0f);
+      glBegin(GL_QUADS);
+        buildWall(0.5f, 0.5f, 0.5f);
+      glEnd();
+    glPopMatrix();
+  glPopMatrix();
+
+  glFlush();
+}
+
+void buildSinkUpperCabinet() {
+  glColor3f(BROWN);
+
+  glPushMatrix();
+    glTranslatef(7.5f, 6.5f, 1.0f);
+
+    glBegin(GL_QUADS);
+      buildWall(6.0f, 3.0f, 2.0f);
+    glEnd();
+
+  glPopMatrix();
+
+  glFlush();
+}
+
+void buildFridge() {
+  glColor3f(DARKGREY);
+
+  glPushMatrix();
+    glTranslatef(0.0f, 0.0f, KITCHEN_WIDTH - 3.0f);
+    glBegin(GL_QUADS);
+      buildWall(4.0f, 8.0f, 3.0f);
+    glEnd();
+  glPopMatrix();
+
+  glFlush();
+}
+
+void buildStove() {
+  glColor3f(SOFTGREY);
+
+  glPushMatrix();
+    glTranslatef(KITCHEN_WIDTH - 5.0f, 0.0f, 1.0f);
+    glBegin(GL_QUADS);
+      buildWall(4.0f, 3.5f, 3.0f);
+    glEnd();
+
+    glPushMatrix();
+      glTranslatef(0.3f, 0.3f, 3.0f);
+      glColor3f(BLACK);
+      glBegin(GL_QUADS);
+        buildWall(3.5f, 2.5f, 0.1f);
+      glEnd();
+    glPopMatrix();
+
+  glPopMatrix();
+
+  glFlush();
+}
+
+void buildCabinet() {
+  glColor3f(SOFTBLACK);
+
+  glPushMatrix();
+    glTranslatef(7.0f, 0.0f, KITCHEN_WIDTH - 3.0f);
+    glBegin(GL_QUADS);
+      buildWall(5.0f, 5.0f, 3.0f);
+    glEnd();
+  glPopMatrix();
+
+  glFlush();
+}
 #endif
