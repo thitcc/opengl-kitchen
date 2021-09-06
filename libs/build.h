@@ -271,6 +271,22 @@ void buildFridge() {
     glBegin(GL_QUADS);
       buildWall(4.0f, 8.0f, 3.0f);
     glEnd();
+
+    glPushMatrix();
+      glColor3f(SOFTGREY);
+      glTranslatef(0.0f, 0.0f, -0.1f);
+      glBegin(GL_QUADS);
+        buildWall(4.0f, 5.5f, 0.1f);
+      glEnd();
+    glPopMatrix();
+    
+    glPushMatrix();
+      glColor3f(MEDIUMGREY);
+      glTranslatef(0.0f, 5.5f, -0.1f);
+      glBegin(GL_QUADS);
+        buildWall(4.0f, 2.5f, 0.1f);
+      glEnd();
+    glPopMatrix();
   glPopMatrix();
 
   glFlush();
@@ -299,13 +315,29 @@ void buildStove() {
 }
 
 void buildCabinet() {
-  glColor3f(SOFTBLACK);
+  glColor3f(WHITE);
 
   glPushMatrix();
     glTranslatef(7.0f, 0.0f, KITCHEN_WIDTH - 3.0f);
     glBegin(GL_QUADS);
       buildWall(5.0f, 5.0f, 3.0f);
     glEnd();
+
+    glPushMatrix();
+      glColor3f(SOFTERWHITE);
+      glTranslatef(0.0f, 0.0f, -0.2f);
+      glBegin(GL_QUADS);
+        buildWall(2.5f, 5.0f, 0.2f);
+      glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+      glColor3f(SOFTWHITE);
+      glTranslatef(2.5f, 0.0f, -0.1f);
+      glBegin(GL_QUADS);
+        buildWall(2.5f, 5.0f, 0.1f);
+      glEnd();
+    glPopMatrix();
   glPopMatrix();
 
   glFlush();
