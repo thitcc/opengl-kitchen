@@ -111,8 +111,8 @@ void display() {
 
 	gluLookAt(eye.x, eye.y, eye.z, center.x, center.y, center.z, u.x, u.y, u.z); 
 
-	draw_grid(50);
-	draw_axis(1, 1, 1);
+	// draw_grid(50);
+	// draw_axis(1, 1, 1);
 
 	buildFrontWall();
 	buildBackWall();
@@ -182,6 +182,8 @@ void motion(int x, int y) {
 }
 
 void keyboard(unsigned char key, int x, int y){
+	key = tolower(key);
+	
 	if (key == 27) { // ESC
 		glutLeaveMainLoop();
 	} else if (key == 112) { // p
