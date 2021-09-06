@@ -15,6 +15,7 @@
 #define SOFTBLUE 0.1f, 0.1f, 0.6f
 
 #define SOFTWHITE 0.95f, 0.95f, 0.95f
+#define SOFTERWHITE 0.93f, 0.93f, 0.93f
 
 #define FRONTWALL 0.95f, 0.95f, 0.95f
 #define BACKWALL 0.94f, 0.94f, 0.94f
@@ -22,6 +23,7 @@
 #define RIGHTWALL 0.92f, 0.92f, 0.92f
 
 #define DARKGREY 0.5f, 0.5f, 0.5f
+#define MEDIUMGREY 0.65f, 0.65f, 0.65f
 #define SOFTGREY 0.8f, 0.8f, 0.8f
 
 #endif
