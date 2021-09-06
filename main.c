@@ -33,7 +33,6 @@ float ZNEAR = 10e-3;
 float ZFAR = 10e3;
 
 Transform CAM;
-Vec2D MOTION;
 
 int KEYBOARD[128] = {0};
 
