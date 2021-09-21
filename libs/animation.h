@@ -34,10 +34,10 @@ void changeWindowState() { window.state = window.angle == 0.0f ? OPEN : CLOSE; }
 float ceiling_fan_angle = 0.0f;
 
 void changeCeilingFanAngle() {
-  if (ceiling_fan_angle == -360.0f) {
+  if (ceiling_fan_angle == 360.0f) {
     ceiling_fan_angle = 0.0f;
   }
-  ceiling_fan_angle -= 1.0f;
+  ceiling_fan_angle += 1.0f;
 }
 
 #endif
