@@ -1,5 +1,7 @@
 # OpenGL Kitchen
+[Vídeo AB1](https://www.youtube.com/watch?v=NDsJW6ukSr4)
 
+[Vídeo AB2](https://www.youtube.com/watch?v=ejZ-Mf22z7w)
 ## Prerequisites
 
 - C Compiler
