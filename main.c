@@ -118,6 +118,8 @@ void display() {
 	draw_grid(50);
 	draw_axis(1, 1, 1);
 
+	changeCeilingFanAngle();
+
 	buildFrontWall(&wall_texture);
 	buildBackWall(&wall_texture);
 	buildWindow(window.angle, &window_texture);
@@ -132,6 +134,7 @@ void display() {
 	buildStove(&metal_texture, &stove_front_texture, &stove_up_texture);
 	buildCabinet(&wood_texture, &cabinet_door_texture);
 	buildTable(&wood_texture);
+	buildCeilingFan(ceiling_fan_angle, &metal_texture);
 
 	doorAnimation();
 	windowAnimation();
