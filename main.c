@@ -1,9 +1,11 @@
+#include <stdlib.h>
 #include <GL/gl.h>
 #include <GL/freeglut.h>
 #include <math.h>
 #include <ctype.h>
 #include "libs/colors.h"
 #include "libs/vectors.h"
+#include "libs/texture.h"
 #include "libs/build.h"
 #include "libs/animation.h"
 
@@ -82,6 +84,8 @@ int main(int argc, char** argv) {
 
 	init_gl();
 
+	initTextures();
+
 	CAM.position = (Vec3D) {0.0f, 3.0f, 0.0f};
 	CAM.rotation = (Vec3D) {-90.0f, 0.0f, 0.0f};
 	
@@ -114,19 +118,20 @@ void display() {
 	draw_grid(50);
 	draw_axis(1, 1, 1);
 
-	buildFrontWall();
-	buildBackWall();
-	buildWindow(window.angle);
-	buildLeftWall();
-	buildRightWall();
-	buildDoor(door.angle);
-	buildFloor();
-	buildCeiling();
-	buildSink();
-	buildSinkUpperCabinet();
-	buildFridge();
-	buildStove();
-	buildCabinet();
+	buildFrontWall(&wall_texture);
+	buildBackWall(&wall_texture);
+	buildWindow(window.angle, &window_texture);
+	buildLeftWall(&wall_texture);
+	buildRightWall(&wall_texture);
+	buildDoor(door.angle, &door_texture);
+	buildFloor(&tile_texture);
+	buildCeiling(&ceiling_texture);
+	buildSink(&cabinet_door_texture, &metal_texture, &metal_matte_texture);
+	buildSinkUpperCabinet(&wood_texture, &cabinet_door_texture);
+	buildFridge(&metal_texture, &fridge_texture);
+	buildStove(&metal_texture, &stove_front_texture, &stove_up_texture);
+	buildCabinet(&wood_texture, &cabinet_door_texture);
+	buildTable(&wood_texture);
 
 	doorAnimation();
 	windowAnimation();
