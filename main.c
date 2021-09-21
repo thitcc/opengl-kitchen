@@ -159,9 +159,6 @@ void display() {
 
 	setup_light();
 
-	draw_grid(50);
-	draw_axis(1, 1, 1);
-
 	changeCeilingFanAngle();
 
 	buildFrontWall(&wall_texture);
@@ -307,45 +304,4 @@ Vec3D right(Transform* t) {
 	v.z = -sin(b);
 
 	return v;
-}
-
-// Grid
-
-void draw_axis(int x, int y, int z) {
-	glLineWidth(3.0f);
-	glBegin(GL_LINES);
-	if(x) {
-		glColor3f(RED);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(ZFAR, 0.0f, 0.0f);
-	}
-	if(y) {
-		glColor3f(GREEN);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, ZFAR, 0.0f);
-	}
-	if(z) {
-		glColor3f(BLUE);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, ZFAR);
-	}
-	glEnd();
-	glLineWidth(1.0f);
-}
-
-void draw_grid(int n) {
-	int i;
-
-	glBegin(GL_LINES);
-	glColor3f(WHITE);
-	for(i = -n;i < n;i++){
-		float d = (float) i;
-		// Parallel to x-axis 
-		glVertex3f(-n, 0.0f, d);
-		glVertex3f(n, 0.0f, d);
-		// Parallel to z-axis
-		glVertex3f(d, 0.0f, -n);
-		glVertex3f(d, 0.0f, n);
-	}
-	glEnd();
 }
