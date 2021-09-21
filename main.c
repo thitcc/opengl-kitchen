@@ -180,6 +180,7 @@ void display() {
 	buildTable();
 	buildLighting();
 	buildCeilingFan(ceiling_fan_angle, &metal_texture);
+	buildPainting(&confuso_texture);
 
 	doorAnimation();
 	windowAnimation();

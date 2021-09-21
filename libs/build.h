@@ -591,7 +591,7 @@ void buildCeilingFan(float rotation_angle, Texture* texture) {
       glPushMatrix();
         glTranslatef(0.4f, 0.0f, -0.6f);
         glBegin(GL_QUADS);
-        buildWall(0.4f, 0.2f, 0.2f, 1.0f, 1.0f);
+          buildWall(0.4f, 0.2f, 0.2f, 1.0f, 1.0f);
         glEnd();
 
         glTranslatef(0.4f, 0.0f, -0.2f);
@@ -604,5 +604,49 @@ void buildCeilingFan(float rotation_angle, Texture* texture) {
 
   glFlush();
   glDisable(GL_TEXTURE_2D);
+}
+
+void buildPainting(Texture* texture) {
+  glEnable(GL_TEXTURE_2D);
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+  glBindTexture(GL_TEXTURE_2D, texture->id);
+  
+  glPushMatrix();
+    glTranslatef(0.0f, 3.5f, 6.0f);
+    glRotatef(270.0f, 0.0f, 0.0f, 1.0f);
+    glRotatef(270.0f, 0.0f, 1.0f, 0.0f);
+
+    glBegin(GL_QUADS);
+      buildWall(6.0f, 0.2f, 4.0f, 1.0f, 1.0f);
+    glEnd();
+
+    glDisable(GL_TEXTURE_2D);
+
+    glColor3f(BROWN);
+
+    glPushMatrix();
+      glTranslatef(-0.2f, 0.0f, 0.0f);
+      glBegin(GL_QUADS);
+        buildWall(0.2f, 0.2f, 4.0f, 1.0f, 1.0f);
+      glEnd();
+
+      glTranslatef(0.0f, 0.0f, -0.2f);
+      glBegin(GL_QUADS);
+        buildWall(6.2f, 0.2f, 0.2f, 1.0f, 1.0f);
+      glEnd();
+
+      glTranslatef(6.2f, 0.0f, 0.0f);
+      glBegin(GL_QUADS);
+        buildWall(0.2f, 0.2f, 4.2f, 1.0f, 1.0f);
+      glEnd();
+
+      glTranslatef(-6.2f, 0.0f, 4.2f);
+      glBegin(GL_QUADS);
+        buildWall(6.4f, 0.2f, 0.2f, 1.0f, 1.0f);
+      glEnd();
+    glPopMatrix();
+  glPopMatrix();
+
+  glFlush();
 }
 #endif
