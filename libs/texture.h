@@ -23,6 +23,7 @@ Texture metal_matte_texture;
 Texture stove_front_texture;
 Texture stove_up_texture;
 Texture fridge_texture;
+Texture confuso_texture;
 
 void loadTexture(char* filePath, Texture* texture) {
   int nrChannels;
@@ -47,7 +48,7 @@ void loadTexture(char* filePath, Texture* texture) {
   stbi_image_free(texture->data);
 }
 
-void initTextures() {
+void init_textures() {
   loadTexture("./textures/wall_black.jpg", &wall_texture);
   loadTexture("./textures/tile.jpg", &tile_texture);
   loadTexture("./textures/wall_white.jpg", &ceiling_texture);
@@ -60,6 +61,7 @@ void initTextures() {
   loadTexture("./textures/stove_front.jpg", &stove_front_texture);
   loadTexture("./textures/stove_up.jpg", &stove_up_texture);
   loadTexture("./textures/fridge.jpg", &fridge_texture);
+  loadTexture("./textures/image.jpg", &confuso_texture);
 }
 
 #endif
