@@ -38,6 +38,11 @@ Transform CAM;
 
 int KEYBOARD[128] = {0};
 
+GLfloat light0_ambient[] = { 0.1, 0.1, 0.1, 1.0 };
+GLfloat light0_diffuse[] = { 1.0, 1.0, 0.9, 1.0 };
+GLfloat light0_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat light0_position[] = { 10.0f, 5.0f, 10.0f, 1.0f };
+
 void init_gl();
 
 // Callbacks
@@ -57,6 +62,10 @@ void reshape(int width, int height);
 void draw_axis(int x, int y, int z);
 
 void draw_grid(int n);
+
+void init_light();
+
+void setup_light();
 
 // Math utils
 
@@ -84,11 +93,16 @@ int main(int argc, char** argv) {
 
 	init_gl();
 
-	initTextures();
+	init_textures();
 
 	CAM.position = (Vec3D) {0.0f, 3.0f, 0.0f};
 	CAM.rotation = (Vec3D) {-90.0f, 0.0f, 0.0f};
 	
+	init_light();
+
+	glEnable(GL_COLOR_MATERIAL);
+  glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+
 	glutMainLoop();
 
 	return 0;
@@ -98,6 +112,34 @@ void init_gl() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+}
+
+void init_light() {
+	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
+
+	// Anti aliasing
+	glEnable(GL_LINE_SMOOTH);   
+	glEnable(GL_POINT_SMOOTH);   
+	glEnable(GL_BLEND);    
+
+	// Lighting and Shade
+	glEnable(GL_DEPTH_TEST);   
+	glDepthFunc(GL_LEQUAL);   
+	glShadeModel(GL_SMOOTH);     
+	glEnable(GL_LIGHT0);
+}
+
+void setup_light() {
+	glPushMatrix();
+    glEnable(GL_LIGHTING);
+
+    glPushMatrix();
+      glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);
+      glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+      glLightfv(GL_LIGHT0, GL_SPECULAR, light0_specular);
+      glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
+    glPopMatrix();
+  glPopMatrix();
 }
 
 // Callbacks
@@ -114,6 +156,8 @@ void display() {
 	Vec3D center = {eye.x + fwd.x, eye.y + fwd.y, eye.z + fwd.z};
 
 	gluLookAt(eye.x, eye.y, eye.z, center.x, center.y, center.z, u.x, u.y, u.z); 
+
+	setup_light();
 
 	draw_grid(50);
 	draw_axis(1, 1, 1);
@@ -133,7 +177,8 @@ void display() {
 	buildFridge(&metal_texture, &fridge_texture);
 	buildStove(&metal_texture, &stove_front_texture, &stove_up_texture);
 	buildCabinet(&wood_texture, &cabinet_door_texture);
-	buildTable(&wood_texture);
+	buildTable();
+	buildLighting();
 	buildCeilingFan(ceiling_fan_angle, &metal_texture);
 
 	doorAnimation();
@@ -194,10 +239,14 @@ void keyboard(unsigned char key, int x, int y){
 
 	if (key == 27) { // ESC
 		glutLeaveMainLoop();
-	} else if (key == 112) { // p
+	} else if (key == 'p') {
 		changeDoorState();
-	} else if (key == 106) { // j
+	} else if (key == 'j') {
 		changeWindowState();
+	} else if (key == 'l') {
+		glEnable(GL_LIGHT0);
+	} else if (key == 'k') {
+		glDisable(GL_LIGHT0);
 	}
 		
 	KEYBOARD[tolower(key)] = 1;

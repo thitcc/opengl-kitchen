@@ -43,3 +43,7 @@ make
 **__P__** opens the door
 
 **__J__** opens the window
+
+**__L__** enables the light
+
+**__K__** disables the light

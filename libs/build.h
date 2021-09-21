@@ -458,10 +458,8 @@ void buildCabinet(Texture* wood_texture, Texture* cabinet_door_texture) {
   glDisable(GL_TEXTURE_2D);
 }
 
-void buildTable(Texture* wood_texture) {
-  glEnable(GL_TEXTURE_2D);
-  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-  glBindTexture(GL_TEXTURE_2D, wood_texture->id);
+void buildTable() {
+  glColor3f(BROWN);
 
   glPushMatrix();
     glTranslatef(8.0f, 3.0f, 8.0f);
@@ -497,7 +495,40 @@ void buildTable(Texture* wood_texture) {
   glPopMatrix();
 
   glFlush();
-  glDisable(GL_TEXTURE_2D);
+}
+
+void buildLighting() {
+  glColor3f(DARKGREY);
+
+  glPushMatrix();
+    glTranslatef(8.5f, 3.2f, 9.85f);
+
+    // Bottom
+    glBegin(GL_QUADS);
+      buildWall(0.6f, 0.1f, 0.6f, 1.0f, 1.0f);
+    glEnd();
+
+    glTranslatef(0.0f, 0.0f, 0.15f);
+    glBegin(GL_QUADS);
+      buildWall(0.3f, 1.5f, 0.3f, 1.0f, 1.0f);
+    glEnd();
+
+    glTranslatef(0.0f, 1.5f, 0.0f);
+    // Top
+    glBegin(GL_QUADS);
+      buildWall(1.0f, 0.1f, 0.3f, 1.0f, 1.0f);
+    glEnd();
+
+    glColor3f(WHITE);
+    glTranslatef(0.3f, -0.2f, 0.0f);
+    // Light
+    glBegin(GL_QUADS);
+      buildWall(0.7f, 0.2f, 0.3f, 1.0f, 1.0f);
+    glEnd();
+  
+  glPopMatrix();
+
+  glFlush();
 }
 
 void buildCeilingFan(float rotation_angle, Texture* texture) {
